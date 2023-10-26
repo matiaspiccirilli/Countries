@@ -1,8 +1,8 @@
 /*controllers */
-const{getAllCountries} = require("../controllers/getAllCountries")
-const{getCountryById} = require("../controllers/getCountryById")
-const{createActivity} = require("../controllers/createActivity")
-const{getAllActivities} = require("../controllers/getAllActivities")
+const{getAllCountries} = require("../handlers/countriesHandlers")
+const{getCountryById} = require("../handlers/countriesHandlers")
+const{createActivity} = require("../controllers/activityControllers")
+const{getAllActivities} = require("../handlers/activitiesHandlers")
 
 /*express config */
 const { Router } = require("express");
