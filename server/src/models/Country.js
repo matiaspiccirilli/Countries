@@ -10,22 +10,22 @@ module.exports = (sequelize) => {
       primaryKey: true,
       type: DataTypes.STRING,
       allowNull: false,
-    },
+    }, 
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     img: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     continente: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     capital: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     subregion: {
       type: DataTypes.STRING
@@ -35,8 +35,12 @@ module.exports = (sequelize) => {
     },
     poblacion: {
       type: DataTypes.STRING,
-      allowNull: false
-    }
-  }, {timestamps: false}
+      allowNull: false,
+  }}, {timestamps: false}
   );
 };// TETS de prueba
+
+/*
+    
+    
+    */

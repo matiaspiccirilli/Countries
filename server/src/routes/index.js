@@ -4,6 +4,7 @@ const{getCountryById} = require("../handlers/countriesHandlers")
 const{createActivity} = require("../controllers/activityControllers")
 const{getAllActivities} = require("../handlers/activitiesHandlers")
 
+
 /*express config */
 const { Router } = require("express");
 const router = Router();
