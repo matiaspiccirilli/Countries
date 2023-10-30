@@ -11,6 +11,7 @@ server.listen(PORT, async () => {
   console.log(`Server listening on port ${PORT}`);
   const {countries} = api
   countries.map(async({cca3,name,flags,continents,capital,subregion, area, population})=>{await 
+    
     Country.findOrCreate({
       where: {
         id: cca3,
@@ -18,13 +19,14 @@ server.listen(PORT, async () => {
       defaults:{
         name: name.common,
         img: flags.png,
-        continente: continents?continents[0]:'undefined',
-        capital: capital?"capital[0]":'undefined',
+        continente: continents? continents[0]:'undefined',
+        capital: capital ? capital[0]:'undefined' ,
         subregion:subregion,
         area: area,
         poblacion: population,
       }
       })
+      console.log(capital ? capital[0]:'undefined') //aca esta andando bien no se q onda
     })
   }) // falta acomodar el tema de capital[0] que no se porque no lo toma
 

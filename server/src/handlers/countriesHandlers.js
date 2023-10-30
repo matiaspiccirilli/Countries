@@ -1,17 +1,17 @@
-const api = require("../../api/db.json")
+const {Country} = require("../db")
 
 const getAllCountries = async (req, res) => {
 
     try {
-
+        const countries = await Country.findAll()
         const { name } = req.query;
         if (!name) {
-            return res.status(200).json(api);
+            return res.status(200).json(countries);
         }
 
        // Filtra los países cuyos nombres contienen las letras proporcionadas en el parámetro 'name'
-       const matchingCountries = api.countries.filter((country) =>
-       country.name.common.toLowerCase().includes(name.toLowerCase())
+       const matchingCountries = countries.filter((country) =>
+       country.name.toLowerCase().includes(name.toLowerCase())
         );
 
         if (matchingCountries.length > 0) {
@@ -27,15 +27,15 @@ const getAllCountries = async (req, res) => {
 const getCountryById = async (req, res) => {
 
     try {
-
+    const countries = await Country.findAll()
     const {id} = req.params;
     if (!id) {
-        return res.status(200).json(api);
+        return res.status(200).json(countries);
     }
 
     // Buscar el país por id
-        const country = api.countries.find((country) =>
-            country.cca3.toLowerCase() === id.toLowerCase()
+        const country = countries.find((country) =>
+            country.id.toLowerCase() === id.toLowerCase()
         );
 
         if (country) {
