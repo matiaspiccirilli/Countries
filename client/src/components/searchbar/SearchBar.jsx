@@ -1,12 +1,24 @@
+import React from "react"
 
-function SearchBar () {
+
+function SearchBar ({onSearch}) {
+    const [name, setName] = React.useState()
+
+    const handleChange = (event) => {
+        setName(event.target.value)
+    }
+
     return (
-        <>
+        
         <div>
-        <input/>
-        <button></button>
+        <input
+        onChange={handleChange}
+        type="search"
+        value={name}
+        />
+        <button onClick={()=> onSearch(name)}>Buscar</button>
         </div> 
-        </>
+        
     )
 }
 

@@ -1,8 +1,13 @@
+import App from "../../App"
+import { Link } from "react-router-dom"
 
 function Landing () {
     return (
         <>
-        <p>Soy la Landing Page!</p>
+        <p>Welcome To Countries App</p>
+        <Link to="home">
+        <button type="button">INGRESAR</button>
+        </Link> 
         </>
     )
 }

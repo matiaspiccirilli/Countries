@@ -1,0 +1,3 @@
+const GET_COUNTRIES = "GET_COUNTRIES";
+
+export default {GET_COUNTRIES}
