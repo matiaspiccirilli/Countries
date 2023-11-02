@@ -10,7 +10,7 @@ const Cards = () => {
     const paises = useSelector(state => state.countries)
 
     return (
-        <div className={style}>
+        <div className={style.container}>
         {paises.map(countrie=>{
             return <Card
             key={countrie.id}

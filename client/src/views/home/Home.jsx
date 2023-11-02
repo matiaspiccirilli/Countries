@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { filterContinent, getCountries } from "../../redux/actions";
 import { orderName, orderPopulation } from "../../redux/actions";
+import style from "./Home.module.css"
 
 
 const Home = () => {
@@ -60,7 +61,9 @@ const Home = () => {
     return (
         <div>
 
-            <select name="FiltroByContinent" onChange={handleFilterByContinent}>
+            <div class="select-container">
+            <label>FILTRAR POR CONTINENTE</label>
+            <select className={style.customselect} name="FiltroByContinent" onChange={handleFilterByContinent}>
                 <option value="Europe">Europa</option>
                 <option value="Africa">Africa</option>
                 <option value="Oceania">Oceania</option>
@@ -69,23 +72,33 @@ const Home = () => {
                 <option value="North America">America del Norte</option>
                 <option value="Antarctica">Antartida</option>
             </select>
+            </div>
 
-            <select name="FiltroByActivities">
+            <div class="select-container">
+            <label>FILTRAR POR ACTIVIDADES</label>
+            <select className={style.customselect} name="FiltroByActivities">
                 <option value=""></option>
                 <option value=""></option>
             </select>
+            </div>
 
-            <select name="OrderByName" onChange={handleOrderByName}>
+            <div class="select-container">
+            <label>ORDENAR POR NOMBRE</label>
+            <select className={style.customselect} name="OrderByName" onChange={handleOrderByName}>
                 <option value="A">Ascendente</option>
                 <option value="D">Descendente</option>
             </select>
+            </div>
 
-            <select name="OrderByPopulation" onChange={handleOrderByPopulation}>
+            <div class="select-container">
+            <label>ORDENAR POR POBLACION</label>
+            <select className={style.customselect} name="OrderByPopulation" onChange={handleOrderByPopulation}>
                 <option value="A">Mayor</option>
                 <option value="D">Menor</option>
             </select>
+            </div>
 
-            <SearchBar onSearch={onSearch}/>
+            <SearchBar className={style.search} onSearch={onSearch}/>
             <Card
             key={searchedCountry?.id}
             id={searchedCountry?.id}    

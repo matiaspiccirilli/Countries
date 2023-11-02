@@ -1,0 +1,36 @@
+
+
+/* Estilos para la página de bienvenida (Landing) */
+.landingcontainer {
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.landingtext {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Estilos para el botón de ingreso */
+.landingbutton {
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Verde */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Cambia el color del botón al pasar el mouse */
+.landingbutton:hover {
+  background-color: #45a049;
+}
+

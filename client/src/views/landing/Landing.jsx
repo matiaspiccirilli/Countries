@@ -1,13 +1,17 @@
 import App from "../../App"
 import { Link } from "react-router-dom"
+import style from "./Landing.module.css"
+
 
 function Landing () {
     return (
         <>
-        <p>Welcome To Countries App</p>
+        <div className={style.landingcontainer}>
+        <p className={style.landingtext}>Welcome To Countries App</p>
         <Link to="home">
-        <button type="button">INGRESAR</button>
-        </Link> 
+        <button className={style.landingbutton} type="button">INGRESAR</button>
+        </Link>
+        </div>
         </>
     )
 }

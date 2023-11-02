@@ -1,6 +1,31 @@
 .card{
     border: 1px solid black;
-    width: fit-content;
+    width: 150%; /* Asegura que todas las tarjetas ocupen el 100% del ancho */
+    max-width: 150px; /* Establece un ancho máximo para evitar que sean demasiado anchas */
     height: fit-content;
     border-radius: 10px;
+    text-align: center;
+    margin: 1rem;
+    padding: 1rem; /* Añade un espacio uniforme dentro de la tarjeta */
+    display: flex;
+    flex-direction: column; /* Alinea el contenido en columna */
+}
+
+.card:hover {
+    box-shadow: skyblue;
+    transition: 1s;
+    cursor: pointer;
+    background-color: skyblue;
+}
+
+.name{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.img{
+    width: 70%;
+    max-height: 100px; /* Añade un límite de altura para que todas las imágenes sean uniformes */
+    object-fit: cover; /* Escala las imágenes para que se ajusten uniformemente */
+    align-self: center;
 }

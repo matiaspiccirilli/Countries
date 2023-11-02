@@ -1,0 +1,38 @@
+/* Estilos para la barra de búsqueda */
+.search {
+    top: 20px
+}
+
+.search-bar {
+    text-align: center;
+  }
+  
+  /* Estilos para el input de búsqueda */
+  .searchinput {
+    width: 30%; 
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f0f0f0; /* Fondo gris claro */
+    color: #333;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el botón de búsqueda */
+  .searchbutton {
+    padding: 10px 20px;
+    background-color: #007BFF; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Efecto de transición al pasar el mouse */
+  }
+  
+  /* Cambia el color del botón al pasar el mouse */
+  .searchbutton:hover {
+    background-color: #0056b3;
+  }

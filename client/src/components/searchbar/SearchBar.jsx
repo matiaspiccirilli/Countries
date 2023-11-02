@@ -1,4 +1,5 @@
 import React from "react"
+import style from "./SearchBar.module.css"
 
 
 function SearchBar ({onSearch}) {
@@ -12,11 +13,12 @@ function SearchBar ({onSearch}) {
         
         <div>
         <input
+        className={style.searchinput}
         onChange={handleChange}
         type="search"
         value={name}
         />
-        <button onClick={()=> onSearch(name)}>Buscar</button>
+        <button className={style.searchbutton} onClick={()=> onSearch(name)}>Buscar</button>
         </div> 
         
     )

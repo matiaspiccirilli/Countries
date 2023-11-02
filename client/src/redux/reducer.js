@@ -2,7 +2,7 @@ import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CO
 
 const initialState = {
     countries: [],
-    filteredCountries: [],
+    allCountries: [], //backup
 }
 
 
@@ -10,7 +10,10 @@ const rootReducer = (state = initialState, action) => {
     switch(action.type) {
 
         case GET_COUNTRIES:
-            return {...state, countries: action.payload, filteredCountries: action.payload }
+            return {
+                    ...state, 
+                    countries: action.payload, 
+                    allCountries: action.payload }
 
         case ORDER_NAME: 
         const countriesOrderByName = action.payload === "A" ? [...state.countries].sort((a, b) => a.name.localeCompare(b.name)) 
@@ -32,12 +35,12 @@ const rootReducer = (state = initialState, action) => {
 
         case FILTER_CONTINENT:
             
-        const filteredCountriesByContinent = [...state.countries].filter((countrie) => countrie.continente === action.payload)
+        const filteredCountriesByContinent = [...state.allCountries].filter((countrie) => countrie.continente === action.payload)
             console.log(filteredCountriesByContinent)
 
             return {
                 ...state,
-                filteredCountries: filteredCountriesByContinent,
+                countries: filteredCountriesByContinent,
             }
             
 

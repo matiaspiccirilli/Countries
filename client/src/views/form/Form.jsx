@@ -1,5 +1,6 @@
 import React from "react"
 import validation from "./validation"
+import style from "./Form.module.css"
 
 function Form ({login}) {
 
@@ -36,7 +37,7 @@ function Form ({login}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}> 
+        <form className={style.form} onSubmit={handleSubmit}> 
 
         <label htmlFor="">Nombre</label>
         <input type="text" name="name" value={activityData.name} onChange={handleChange}/>
