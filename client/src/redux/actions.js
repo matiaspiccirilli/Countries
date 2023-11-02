@@ -1,5 +1,5 @@
 import axios from "axios"
-import GET_COUNTRIES from "./actionType"
+import {FILTER_CONTINENT, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_ACTIVITY} from "./actionType"
 
 
 
@@ -9,4 +9,16 @@ export const getCountries = () => {
         const countries = apiData.data;
         dispatch({ type: GET_COUNTRIES, payload: countries})
     }
+}
+
+export const orderName = (order) => {
+    return {type: ORDER_NAME, payload: order}
+}
+
+export const orderPopulation = (order) => {
+    return {type: ORDER_POPULATION, payload: order}
+}
+
+export const filterContinent = (continent) => {
+    return {type: FILTER_CONTINENT, payload: continent}
 }
