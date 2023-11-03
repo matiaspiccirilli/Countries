@@ -37,27 +37,6 @@ const Home = () => {
         dispatch(filterContinent(event.target.value))
     }
 
-    const onSearch = async (name) => {
-        try {
-            const {data} = await axios("http://localhost:3001/countries")
-
-            const filteredCountries = data.filter((country) =>
-            country.name.toLowerCase().includes(name.toLowerCase())
-        );
-
-        if (filteredCountries.length > 0) {
-            setSearchedCountry(filteredCountries[0]); // Tomar el primer país de la búsqueda
-        } else {
-            setSearchedCountry(null); // No se encontraron resultados
-        }
-
-        setCountries(filteredCountries);
-
-        } catch(error) {
-            alert("no hay paises con ese nombre")
-        }
-    }
-
     const pagination = (event) => {
         dispatch(changePage(event.target.name))
     }
@@ -105,13 +84,8 @@ const Home = () => {
             <button onClick={pagination} name="prev">{"<<"}</button>
             <button onClick={pagination} name="next">{">>"}</button>
 
-            <SearchBar className={style.search} onSearch={onSearch}/>
-            <Card
-            key={searchedCountry?.id}
-            id={searchedCountry?.id}    
-            img={searchedCountry?.img}
-            name={searchedCountry?.name}
-            continent={searchedCountry?.continente}/>
+            <SearchBar className={style.search} />
+            
             <Cards/> 
         </div>
     )

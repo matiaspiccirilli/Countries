@@ -1,4 +1,4 @@
-import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CONTINENT, PAGINATION } from "./actionType"
+import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CONTINENT, PAGINATION, SEARCH_COUNTRY } from "./actionType"
 
 const initialState = {
     countries: [],
@@ -42,7 +42,7 @@ const rootReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                countries: filteredCountriesByContinent,
+                countries: filteredCountriesByContinent.splice(0, ITEM_PER_PAGE),
             }
          
         case PAGINATION:
@@ -57,7 +57,13 @@ const rootReducer = (state = initialState, action) => {
                     ...state,
                     countries: [...state.allCountries].splice(firstindex, ITEM_PER_PAGE),
                     currentPage: action.payload === "next" ? next_page : prev_page
-                }    
+                }
+                
+        case SEARCH_COUNTRY:
+                return{
+                    ...state,
+                    countries: [...action.payload].splice(0, ITEM_PER_PAGE)
+                }
 
         default:
             return {...state}
