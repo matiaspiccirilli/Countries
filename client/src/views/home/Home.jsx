@@ -5,7 +5,7 @@ import axios from "axios"
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { filterContinent, getCountries } from "../../redux/actions";
+import { filterContinent, getCountries, changePage } from "../../redux/actions";
 import { orderName, orderPopulation } from "../../redux/actions";
 import style from "./Home.module.css"
 
@@ -58,6 +58,10 @@ const Home = () => {
         }
     }
 
+    const pagination = (event) => {
+        dispatch(changePage(event.target.name))
+    }
+
     return (
         <div>
 
@@ -97,6 +101,9 @@ const Home = () => {
                 <option value="D">Menor</option>
             </select>
             </div>
+
+            <button onClick={pagination} name="prev">{"<<"}</button>
+            <button onClick={pagination} name="next">{">>"}</button>
 
             <SearchBar className={style.search} onSearch={onSearch}/>
             <Card

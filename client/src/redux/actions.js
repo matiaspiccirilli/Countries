@@ -1,5 +1,5 @@
 import axios from "axios"
-import {FILTER_CONTINENT, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_ACTIVITY} from "./actionType"
+import {FILTER_CONTINENT, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_ACTIVITY, PAGINATION} from "./actionType"
 
 
 
@@ -21,4 +21,8 @@ export const orderPopulation = (order) => {
 
 export const filterContinent = (continent) => {
     return {type: FILTER_CONTINENT, payload: continent}
+}
+
+export const changePage = (order) => {
+    return {type: PAGINATION, payload: order} 
 }
