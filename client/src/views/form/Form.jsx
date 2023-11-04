@@ -66,9 +66,19 @@ function Form () {
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post("http://localhost:3001/activities",activityData)
-        .then(res=>alert(res), alert("Actividad Creada con exito"))
+        .then(res=>{
+                    alert("Actividad Creada con Exito!") 
+                    setActivityData({
+                        name: "",
+                        dificultad: "",
+                        duracion: "",
+                        temporada: "",
+                        countries: ""
+                    });
+                })
         .catch(err=>alert(err))
     }
+    console.log(activityData)
 
     return (
         <form className={style.form} onSubmit={handleSubmit}> 
@@ -90,7 +100,10 @@ function Form () {
         {error.temporada && <p style={{color: "red"}}>{error.temporada}</p>}
 
         <label htmlFor="">Paises</label>
-        <select type="text" name="countries" value={activityData.countries} onChange={handleChange}>{paises.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}</select>
+        <select type="text" name="countries" value={activityData.countries} onChange={handleChange}>
+            <option value="">Seleccionar Países</option>
+            {paises.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
+        </select>
         
         <button type="submit" >AGREGAR</button>
 

@@ -6,11 +6,6 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Activity", 
   { 
-    id: {
-      primaryKey: true,
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,7 +20,16 @@ module.exports = (sequelize) => {
     temporada: {
       type: DataTypes.ENUM("Otoño", "Verano", "Primavera", "Invierno"),
       allowNull: false
-    },
+    }
   }, {timestamps: false}
   );
 };
+
+/*   
+   idd: {
+      //primaryKey: true,
+      type: DataTypes.STRING,
+      allowNull: false,
+    }, 
+
+      */

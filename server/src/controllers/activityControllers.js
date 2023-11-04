@@ -1,12 +1,24 @@
 const {Activity} = require("../db");
+const {Country} = require("../db")
 
-const createNewActivity = async (id, name, dificultad, duracion, temporada, paises) => 
-    await Activity.create({id, name, dificultad, duracion, temporada, paises})
+const createNewActivity = async (name, dificultad, duracion, temporada, countries) => { 
+    const nuevaActividad = await Activity.create({name, dificultad, duracion, temporada})
+
+    const countriespost = await Country.findAll({
+        where: {name: countries},
+    })
+    console.log(countries)
+    await nuevaActividad.addCountry(countriespost)
+
+    return nuevaActividad
+
+    }
+
 
     const createActivity = async (req, res) => {
         try {
-        const {id, name, dificultad, duracion, temporada, paises} = req.body
-        const newActivity = await createNewActivity(id, name, dificultad, duracion, temporada, paises)
+        const { name, dificultad, duracion, temporada, countries} = req.body 
+        const newActivity = await createNewActivity( name, dificultad, duracion, temporada, countries) 
         res.status(201).json(newActivity)
         } catch (error) {
             res.status(400).json({error: error.message})

@@ -26,8 +26,8 @@ server.listen(PORT, async () => {
         poblacion: population,
       }
       })
-      console.log(capital ? capital[0]:'undefined') //aca esta andando bien no se q onda
+      
     })
-  }) // falta acomodar el tema de capital[0] que no se porque no lo toma
+  }) 
 
 }).catch(error => console.error(error))
