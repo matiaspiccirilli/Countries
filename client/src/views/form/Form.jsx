@@ -1,9 +1,22 @@
-import React from "react"
+import React, { useEffect } from "react"
 import validation from "./validation"
 import style from "./Form.module.css"
 import axios from "axios"
+import {useSelector} from "react-redux"
+import { getCountries } from "../../redux/actions"
+import { useDispatch } from "react-redux"
 
-function Form ({login}) {
+function Form () {
+
+    //ALMACENAMIENTO DE INFORMACION
+
+    const dispatch = useDispatch()
+
+    const paises = useSelector(state => state.allCountries)
+
+    useEffect(() => {
+        dispatch(getCountries())
+    }, [])
 
     const [activityData, setActivityData] = React.useState({
         name:"",
@@ -13,17 +26,32 @@ function Form ({login}) {
         countries: ""
     })
 
-    const [error, setError] = React.useState({})
-
     const handleChange = (event) => {
 
-        const name = event.target.name;
+        if(event.target.name === "countries") {
+
+            const name = event.target.name;
+            const valor = event.target.value
+        
+        setActivityData({
+            ...activityData, [name]: [...activityData.countries, event.target.value],
+        })
+
+        } else {
+            const name = event.target.name;
         const valor = event.target.value
         
         setActivityData({
             ...activityData, [name]: valor,
         })
+        }
+
     }
+
+
+    //CONTROLADOR DE ERRORES
+
+    const [error, setError] = React.useState({})
 
     React.useEffect(() => { // se usa el useEffect por una cuestión de asincronia , es decir, xq si metes todo en handlechange se valida más rapido el error que lo que se actualiza el estado, en cambio, con Useeffect haces que la validación suceda luego de actualizarse el estado, como lo indica en el 2do argumento de useeffect (igualmente en el CP no va a pasar aclaro)
         if(activityData.name !== "" || activityData.dificultad !== "" || activityData.duracion !== "" || activityData.temporada !== "") {
@@ -32,10 +60,13 @@ function Form ({login}) {
         }   
     }, [activityData])
 
+
+    //CREAR ACTVIDAD
+
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post("http://localhost:3001/activities",activityData)
-        .then(res=>alert(res))
+        .then(res=>alert(res), alert("Actividad Creada con exito"))
         .catch(err=>alert(err))
     }
 
@@ -48,18 +79,18 @@ function Form ({login}) {
         
         <label htmlFor="">Dificultad</label>
         <input type="text" name="dificultad" value={activityData.dificultad} onChange={handleChange}/>
-        {error.dificult && <p style={{color: "red"}}>{error.dificult}</p>}
+        {error.dificultad && <p style={{color: "red"}}>{error.dificultad}</p>}
 
         <label htmlFor="">Duración</label>
         <input type="text" name="duracion" value={activityData.duracion} onChange={handleChange}/>
-        {error.duration && <p style={{color: "red"}}>{error.duration}</p>}
+        {error.duracion && <p style={{color: "red"}}>{error.duracion}</p>}
 
         <label htmlFor="">Temporada</label>
         <input type="text" name="temporada" value={activityData.temporada} onChange={handleChange}/>
-        {error.season && <p style={{color: "red"}}>{error.season}</p>}
+        {error.temporada && <p style={{color: "red"}}>{error.temporada}</p>}
 
         <label htmlFor="">Paises</label>
-        <input type="text" name="countries" value={activityData.countries} onChange={handleChange}/>
+        <select type="text" name="countries" value={activityData.countries} onChange={handleChange}>{paises.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}</select>
         
         <button type="submit" >AGREGAR</button>
 

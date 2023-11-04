@@ -3,7 +3,9 @@ import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CO
 const initialState = {
     countries: [],
     allCountries: [], //backup
-    currentPage: 0
+    currentPage: 0,
+    countriesFiltered: [],
+    filter: false
 }
 
 
@@ -49,7 +51,19 @@ const rootReducer = (state = initialState, action) => {
                 const next_page = state.currentPage + 1;
                 const prev_page = state.currentPage - 1;
                 const firstindex = action.payload === "next" ? next_page*ITEM_PER_PAGE : prev_page*ITEM_PER_PAGE
-    
+
+                if(state.filter){
+
+                    if(action.payload === "next" && firstindex >= state.countriesFiltered.length) return state   
+                    if(action.payload === "prev" && prev_page <0 ) return state 
+
+                    return {
+                        ...state,
+                        countries: [...state.countriesFiltered].splice(firstindex, ITEM_PER_PAGE),
+                        currentPage: action.payload === "next" ? next_page : prev_page
+                    }
+                }
+
                 if(action.payload === "next" && firstindex >= state.allCountries.length) return state   
                 if(action.payload === "prev" && prev_page <0 ) return state 
     
@@ -62,7 +76,9 @@ const rootReducer = (state = initialState, action) => {
         case SEARCH_COUNTRY:
                 return{
                     ...state,
-                    countries: [...action.payload].splice(0, ITEM_PER_PAGE)
+                    countries: [...action.payload].splice(0, ITEM_PER_PAGE),
+                    filter: true,
+                    countriesFiltered: action.payload,
                 }
 
         default:

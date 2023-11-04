@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { filterContinent, getCountries, changePage } from "../../redux/actions";
 import { orderName, orderPopulation } from "../../redux/actions";
 import style from "./Home.module.css"
+import { Link } from "react-router-dom"
 
 
 const Home = () => {
@@ -85,7 +86,11 @@ const Home = () => {
             <button onClick={pagination} name="next">{">>"}</button>
 
             <SearchBar className={style.search} />
-            
+
+            <Link to={"/form"}>
+            <button>Agregar Actividad</button>
+            </Link>
+
             <Cards/> 
         </div>
     )
