@@ -1,11 +1,9 @@
 import SearchBar from "../../components/searchbar/SearchBar";
 import Cards from "../../components/cards/Cards";
-import Card from "../../components/card/Card";
-import axios from "axios"
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { filterContinent, getCountries, changePage } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { filterContinent, getCountries, changePage, getActivities, filterActivity } from "../../redux/actions";
 import { orderName, orderPopulation } from "../../redux/actions";
 import style from "./Home.module.css"
 import { Link } from "react-router-dom"
@@ -20,7 +18,11 @@ const Home = () => {
 
     useEffect(()=> {
         dispatch(getCountries())
+        dispatch(getActivities())
     }, [])
+
+    const actividades = useSelector(state=> state.activities)
+    
 
     const [aux, setAux] = useState(false)
 
@@ -36,6 +38,10 @@ const Home = () => {
 
     const handleFilterByContinent = (event) => {
         dispatch(filterContinent(event.target.value))
+    }
+
+    const handleFilterByActivity = (event) => {
+        dispatch(filterActivity(event.target.value))
     }
 
     const pagination = (event) => {
@@ -60,9 +66,9 @@ const Home = () => {
 
             <div class="select-container">
             <label>FILTRAR POR ACTIVIDADES</label>
-            <select className={style.customselect} name="FiltroByActivities">
-                <option value=""></option>
-                <option value=""></option>
+            <select className={style.customselect} name="FiltroByActivities" onChange={handleFilterByActivity}>
+            <option value="">Seleccionar Actividades</option>
+            {actividades.map(a => <option key={a.name} value={a.name}>{a.name}</option>)}
             </select>
             </div>
 

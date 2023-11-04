@@ -1,7 +1,8 @@
-import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CONTINENT, PAGINATION, SEARCH_COUNTRY } from "./actionType"
+import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CONTINENT, PAGINATION, SEARCH_COUNTRY, GET_ACTIVITIES } from "./actionType"
 
 const initialState = {
     countries: [],
+    activities: [],
     allCountries: [], //backup
     currentPage: 0,
     countriesFiltered: [],
@@ -18,6 +19,12 @@ const rootReducer = (state = initialState, action) => {
                     ...state, 
                     countries: [...action.payload].splice(0, ITEM_PER_PAGE),
                     allCountries: action.payload }
+
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                activities: action.payload
+            }
 
         case ORDER_NAME: 
         const countriesOrderByName = action.payload === "A" ? [...state.countries].sort((a, b) => a.name.localeCompare(b.name)) 
@@ -46,7 +53,15 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 countries: filteredCountriesByContinent.splice(0, ITEM_PER_PAGE),
             }
-         
+
+        case FILTER_ACTIVITY:
+        
+        const filteredCountriesByActivities = state.allCountries.filter((country) => (
+            country.Activities && country.Activities.some(activity => activity.name === action.payload)))
+        
+            return {...state,
+                countries: filteredCountriesByActivities}
+
         case PAGINATION:
                 const next_page = state.currentPage + 1;
                 const prev_page = state.currentPage - 1;
