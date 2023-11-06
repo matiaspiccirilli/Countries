@@ -51,9 +51,10 @@ const Home = () => {
     return (
         <div>
 
-            <div class="select-container">
+            <div className="select-container">
             <label>FILTRAR POR CONTINENTE</label>
             <select className={style.customselect} name="FiltroByContinent" onChange={handleFilterByContinent}>
+                <option value="">Seleccionar Continente</option>
                 <option value="Europe">Europa</option>
                 <option value="Africa">Africa</option>
                 <option value="Oceania">Oceania</option>
@@ -64,7 +65,7 @@ const Home = () => {
             </select>
             </div>
 
-            <div class="select-container">
+            <div className="select-container">
             <label>FILTRAR POR ACTIVIDADES</label>
             <select className={style.customselect} name="FiltroByActivities" onChange={handleFilterByActivity}>
             <option value="">Seleccionar Actividades</option>
@@ -72,17 +73,19 @@ const Home = () => {
             </select>
             </div>
 
-            <div class="select-container">
+            <div className="select-container">
             <label>ORDENAR POR NOMBRE</label>
             <select className={style.customselect} name="OrderByName" onChange={handleOrderByName}>
+                <option value="">Ordenamiento por Nombre</option>
                 <option value="A">Ascendente</option>
                 <option value="D">Descendente</option>
             </select>
             </div>
 
-            <div class="select-container">
+            <div className="select-container">
             <label>ORDENAR POR POBLACION</label>
             <select className={style.customselect} name="OrderByPopulation" onChange={handleOrderByPopulation}>
+                <option value="">Ordenamiento por Población</option>
                 <option value="A">Mayor</option>
                 <option value="D">Menor</option>
             </select>

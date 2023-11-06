@@ -7,7 +7,7 @@ function Landing () {
     return (
         <>
         <div className={style.landingcontainer}>
-        <p className={style.landingtext}>Welcome To Countries App</p>
+        <p className={style.landingtext}></p>
         <Link to="home">
         <button className={style.landingbutton} type="button">INGRESAR</button>
         </Link>

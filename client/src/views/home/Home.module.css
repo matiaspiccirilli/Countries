@@ -1,8 +1,10 @@
-
-
+select {
+  display: inline-block;
+}
 /* Estilos para el contenedor del select */
 .customselect {
-    width: 200px; /* Ancho personalizado */
+    display: inline-block;
+    width: 250px; /* Ancho personalizado */
     padding: 10px; /* Espacio interno */
     border: 1px solid #ccc; /* Borde del select */
     border-radius: 5px; /* Borde redondeado */
@@ -25,20 +27,17 @@
     border-color: #007BFF; /* Cambia el color del borde al pasar el cursor */
   }
 
-  
-
-
-
   /* Estilos para el contenedor del select */
 .select-container {
   position: relative;
   margin-bottom: 20px;
-  /* Asegúrate de que hay suficiente espacio entre contenedores */
+  
 }
 
 /* Estilos para la etiqueta label */
 .select-container label {
-  display: block;
+  display: flex;
+  justify-content: center;
   font-weight: bold;
   margin-bottom: 6px; /* Espacio entre la etiqueta y el select */
   color: #333; /* Color del texto de la etiqueta */
@@ -47,6 +46,8 @@
 
 /* Estilos para el contenedor del select */
 .select-container select {
+  display: flex;
+  justify-content: center ;
   width: 200px; /* Ancho personalizado */
   padding: 10px; /* Espacio interno */
   border: 1px solid #ccc; /* Borde del select */

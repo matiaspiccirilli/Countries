@@ -12,7 +12,7 @@ function Form () {
 
     const dispatch = useDispatch()
 
-    const paises = useSelector(state => state.allCountries)
+    const paises = useSelector(state => state.allCountries).sort((a, b) => a.name.localeCompare(b.name)) 
 
     useEffect(() => {
         dispatch(getCountries())
@@ -80,6 +80,18 @@ function Form () {
     }
     console.log(activityData)
 
+    //DESACTIVAR BOTON SUBMIT
+    const disableButton = () => {
+        
+        for (const err in error) {
+            if (error[err] !== "") {
+                return true; 
+            }
+        }
+        return false; 
+    }
+    console.log(disableButton())
+    
     return (
         <form className={style.form} onSubmit={handleSubmit}> 
 
@@ -105,7 +117,7 @@ function Form () {
             {paises.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
         </select>
         
-        <button type="submit" >AGREGAR</button>
+        <button type="submit" disabled={disableButton()} >AGREGAR</button>
 
         </form>
     )
