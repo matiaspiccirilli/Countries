@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import style from "./Details.module.css"
 
 
 const Details = () => {
@@ -24,15 +25,48 @@ const Details = () => {
     }, [params?.id])
 
     return (
-        <div>
-        <p>{countries?.id}</p>
-        <p>{countries?.name}</p>
+        <div className={style.fondo}>
+
+        <div className={style.predatos}></div>
+
+        <div className={style.contenedor}>
+
+        <div className={style.dato}>
+        <p className={style.textop}>ID: {countries?.id}</p>
+        </div>
+
+        <div className={style.dato}>
+        <p className={style.textop}>Nombre: {countries?.name}</p>
+        </div>
+
+        <div className={style.dato}>
+        <p className={style.textop}>Bandera:</p>
         <img src={countries?.img}></img>
-        <p>{countries?.continent}</p>
-        <p>{countries?.capital}</p>
-        <p>{countries?.subregion}</p>
-        <p>{countries?.area}</p>
-        <p>{countries?.population}</p>
+        </div>
+
+        <div className={style.dato}>
+        <p className={style.textop}>Continente: {countries?.continente}</p>  
+        </div>
+
+        <div className={style.dato}>
+        <p className={style.textop}>Capital: {countries?.capital}</p>
+        </div>
+
+        <div className={style.dato}>
+        <p className={style.textop}>Subregion: {countries?.subregion}</p>
+        </div>
+
+        <div className={style.dato}>
+        <p className={style.textop}>Area: {countries?.area}</p>
+        </div>
+
+        <div className={style.dato}>
+        <p className={style.textop}>Población: {countries?.poblacion }</p>
+        
+        </div>
+
+        </div>
+        
         </div>
     )
 }

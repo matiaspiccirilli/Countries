@@ -47,7 +47,7 @@ const rootReducer = (state = initialState, action) => {
         state.countriesorname = action.payload === "A" ? [...state.allCountries].sort((a, b) => a.name.localeCompare(b.name)) 
         : [...state.allCountries].sort((a, b) => b.name.localeCompare(a.name))
         
-        console.log(state.countriesorname)
+        
             return {
                 ...state,
                 ordername: true,

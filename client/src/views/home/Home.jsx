@@ -11,9 +11,6 @@ import { Link } from "react-router-dom"
 
 const Home = () => {
 
-    const [countries, setCountries] = React.useState()
-    const [searchedCountry, setSearchedCountry] = React.useState(null)
-
     const dispatch = useDispatch()
 
     useEffect(()=> {
@@ -23,7 +20,6 @@ const Home = () => {
 
     const actividades = useSelector(state=> state.activities)
     
-
     const [aux, setAux] = useState(false)
 
     const handleOrderByName = (event) => {
@@ -48,11 +44,18 @@ const Home = () => {
         dispatch(changePage(event.target.name))
     }
 
-    return (
-        <div>
+    const reset = (event) => {
+        dispatch(getCountries(event.target.name))
+    }
 
+    return (
+        <div className={style.fondo}>
+
+        <div className={style.postfon}></div>
+
+        <div className={style.orderfilter}>
             <div className="select-container">
-            <label>FILTRAR POR CONTINENTE</label>
+            <label className={style.label}>FILTRAR POR CONTINENTE</label>
             <select className={style.customselect} name="FiltroByContinent" onChange={handleFilterByContinent}>
                 <option value="">Seleccionar Continente</option>
                 <option value="Europe">Europa</option>
@@ -66,7 +69,7 @@ const Home = () => {
             </div>
 
             <div className="select-container">
-            <label>FILTRAR POR ACTIVIDADES</label>
+            <label className={style.label}>FILTRAR POR ACTIVIDADES</label>
             <select className={style.customselect} name="FiltroByActivities" onChange={handleFilterByActivity}>
             <option value="">Seleccionar Actividades</option>
             {actividades.map(a => <option key={a.name} value={a.name}>{a.name}</option>)}
@@ -74,7 +77,7 @@ const Home = () => {
             </div>
 
             <div className="select-container">
-            <label>ORDENAR POR NOMBRE</label>
+            <label className={style.label}>ORDENAR POR NOMBRE</label>
             <select className={style.customselect} name="OrderByName" onChange={handleOrderByName}>
                 <option value="">Ordenamiento por Nombre</option>
                 <option value="A">Ascendente</option>
@@ -83,25 +86,36 @@ const Home = () => {
             </div>
 
             <div className="select-container">
-            <label>ORDENAR POR POBLACION</label>
+            <label className={style.label}>ORDENAR POR POBLACION</label>
             <select className={style.customselect} name="OrderByPopulation" onChange={handleOrderByPopulation}>
                 <option value="">Ordenamiento por Población</option>
                 <option value="A">Mayor</option>
                 <option value="D">Menor</option>
             </select>
             </div>
+        </div>
 
+        <div className={style.separate}></div>
+
+        <div className={style.sectiontwo}>
+            
+            <div>
             <button onClick={pagination} name="prev">{"<<"}</button>
             <button onClick={pagination} name="next">{">>"}</button>
+            <button onClick={reset} name="reset">Reset</button>            
+            </div>
 
             <SearchBar className={style.search} />
 
             <Link to={"/form"}>
             <button>Agregar Actividad</button>
             </Link>
-
-            <Cards/> 
+            
         </div>
+            
+            <Cards/> 
+
+    </div>
     )
 }
 

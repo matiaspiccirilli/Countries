@@ -1,54 +1,37 @@
-select {
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.postfon {
+  height: 30px;
+}
+
+.orderfilter {
+  display: flex;
+  justify-content: space-around;
+}
+
+.fondo {
+  background-color: darkslategrey;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.separate {
+  height: 130px;
+}
+
+.sectiontwo {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Estilos para el contenedor del select */
+.customselect {
   display: inline-block;
-}
-/* Estilos para el contenedor del select */
-.customselect {
-    display: inline-block;
-    width: 250px; /* Ancho personalizado */
-    padding: 10px; /* Espacio interno */
-    border: 1px solid #ccc; /* Borde del select */
-    border-radius: 5px; /* Borde redondeado */
-    background-color: #fff; /* Fondo blanco */
-    color: #333; /* Color de texto */
-    font-size: 16px; /* Tamaño de fuente */
-    outline: none; /* Quita el borde cuando se enfoca */
-    cursor: pointer; /* Cambia el cursor al pasar por encima */
-  }
-  
-  /* Estilos para las opciones */
-  .customselect option {
-    background-color: #fff; /* Fondo blanco para las opciones */
-    color: #333; /* Color de texto de las opciones */
-    font-size: 16px; /* Tamaño de fuente de las opciones */
-  }
-  
-  /* Estilos para el botón cuando se pasa el cursor por encima */
-  .customselect:hover {
-    border-color: #007BFF; /* Cambia el color del borde al pasar el cursor */
-  }
-
-  /* Estilos para el contenedor del select */
-.select-container {
-  position: relative;
-  margin-bottom: 20px;
-  
-}
-
-/* Estilos para la etiqueta label */
-.select-container label {
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  margin-bottom: 6px; /* Espacio entre la etiqueta y el select */
-  color: #333; /* Color del texto de la etiqueta */
-  font-size: 16px; /* Tamaño de fuente de la etiqueta */
-}
-
-/* Estilos para el contenedor del select */
-.select-container select {
-  display: flex;
-  justify-content: center ;
-  width: 200px; /* Ancho personalizado */
+  width: 250px; /* Ancho personalizado */
   padding: 10px; /* Espacio interno */
   border: 1px solid #ccc; /* Borde del select */
   border-radius: 5px; /* Borde redondeado */
@@ -60,26 +43,57 @@ select {
 }
 
 /* Estilos para las opciones */
-.select-container select option {
+.customselect option {
   background-color: #fff; /* Fondo blanco para las opciones */
   color: #333; /* Color de texto de las opciones */
   font-size: 16px; /* Tamaño de fuente de las opciones */
 }
 
 /* Estilos para el botón cuando se pasa el cursor por encima */
-.select-container select:hover {
+.customselect:hover {
   border-color: #007BFF; /* Cambia el color del borde al pasar el cursor */
+}
+
+/* Estilos para el contenedor del select */
+.select-container {
+position: relative;
+margin-bottom: 20px;
+
+}
+
+/* Estilos para la etiqueta label */
+.label {
+display: flex;
+justify-content: center;
+font-weight: bold;
+margin-bottom: 6px; /* Espacio entre la etiqueta y el select */
+color: white; /* Color del texto de la etiqueta */
+font-size: 16px; /* Tamaño de fuente de la etiqueta */
+}
+
+/* Estilos para el contenedor del select */
+.select-container select {
+display: flex;
+justify-content: center ;
+width: 200px; /* Ancho personalizado */
+padding: 10px; /* Espacio interno */
+border: 1px solid #ccc; /* Borde del select */
+border-radius: 5px; /* Borde redondeado */
+background-color: #fff; /* Fondo blanco */
+color: #333; /* Color de texto */
+font-size: 16px; /* Tamaño de fuente */
+outline: none; /* Quita el borde cuando se enfoca */
+cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Estilos para las opciones */
+.select-container select option {
+background-color: #fff; /* Fondo blanco para las opciones */
+color: #333; /* Color de texto de las opciones */
+font-size: 16px; /* Tamaño de fuente de las opciones */
+}
+
+/* Estilos para el botón cuando se pasa el cursor por encima */
+.select-container select:hover {
+border-color: #007BFF; /* Cambia el color del borde al pasar el cursor */
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-

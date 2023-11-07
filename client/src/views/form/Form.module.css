@@ -1,15 +1,29 @@
 /* Estilos para el formulario */
-form {
+.form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 800px; /* Ancho máximo del formulario */
     margin: 0 auto; /* Centrar el formulario */
     padding: 20px;
+    background-color: white;
+  }
+
+  .fondo{
+      background-color: darkslategrey;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      height: 680px
+  }
+
+  .preform{
+    height: 40px;
   }
   
   /* Estilos para los campos de entrada y etiquetas */
   label {
+    color: black;
     display: block;
     font-size: 16px;
     font-weight: bold;

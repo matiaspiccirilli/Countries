@@ -9,7 +9,7 @@
   
   /* Estilos para el input de búsqueda */
   .searchinput {
-    width: 30%; 
+    width: 300px; 
     padding: 10px;
     border: 1px solid #ccc; /* Borde ligero */
     border-radius: 5px; /* Bordes redondeados */

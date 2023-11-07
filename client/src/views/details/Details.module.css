@@ -1,0 +1,36 @@
+
+.fondo {
+    background-color: darkslategrey;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    height: 680px
+}
+
+.textop{
+  font-style: oblique;
+  background-color: grey;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+}
+
+.dato{
+  direction: center;
+  
+}
+
+.predatos {
+  background-color: darkslategrey;
+  height: 40px;
+}
+
+.contenedor {
+  direction: center;
+  background-color: white;
+  width: 400px;
+}
+
+
+  

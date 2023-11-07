@@ -93,6 +93,8 @@ function Form () {
     console.log(disableButton())
     
     return (
+        <div className={style.fondo}>
+        <div className={style.preform}></div>
         <form className={style.form} onSubmit={handleSubmit}> 
 
         <label htmlFor="">Nombre</label>
@@ -116,10 +118,12 @@ function Form () {
             <option value="">Seleccionar Países</option>
             {paises.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
         </select>
+        {error.countries && <p style={{color: "red"}}>{error.countries}</p>}
         
         <button type="submit" disabled={disableButton()} >AGREGAR</button>
 
         </form>
+        </div>
     )
 }
 
