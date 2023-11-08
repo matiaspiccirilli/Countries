@@ -5,6 +5,7 @@ import axios from "axios"
 import {useSelector} from "react-redux"
 import { getCountries } from "../../redux/actions"
 import { useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 
 function Form () {
 
@@ -29,15 +30,25 @@ function Form () {
     const handleChange = (event) => {
 
         if(event.target.name === "countries") {
-
+            const value = document.getElementById("countries").value
             const name = event.target.name;
-            const valor = event.target.value
-        
+            console.log(value)
         setActivityData({
-            ...activityData, [name]: [...activityData.countries, event.target.value],
+            ...activityData, [name]: [...activityData.countries, value],
         })
+        alert(`${value} Cargado exitosamente`)
+        }
+        
+        else if(event.target.name === "temporada") {
+            const name= event.target.name;
+            const valor=event.target.value;
 
-        } else {
+            setActivityData({
+                ...activityData, [name]: valor.charAt(0).toUpperCase() + valor.slice(1).toLowerCase()
+            })
+        }
+
+        else {
             const name = event.target.name;
         const valor = event.target.value
         
@@ -51,7 +62,7 @@ function Form () {
 
     //CONTROLADOR DE ERRORES
 
-    const [error, setError] = React.useState({})
+    const [error, setError] = React.useState({name: "*", dificultad: "*", temporada: "*", countries: "*"})
 
     React.useEffect(() => { // se usa el useEffect por una cuestión de asincronia , es decir, xq si metes todo en handlechange se valida más rapido el error que lo que se actualiza el estado, en cambio, con Useeffect haces que la validación suceda luego de actualizarse el estado, como lo indica en el 2do argumento de useeffect (igualmente en el CP no va a pasar aclaro)
         if(activityData.name !== "" || activityData.dificultad !== "" || activityData.duracion !== "" || activityData.temporada !== "") {
@@ -82,15 +93,15 @@ function Form () {
 
     //DESACTIVAR BOTON SUBMIT
     const disableButton = () => {
-        
+
         for (const err in error) {
             if (error[err] !== "") {
                 return true; 
             }
         }
+
         return false; 
     }
-    console.log(disableButton())
     
     return (
         <div className={style.fondo}>
@@ -114,13 +125,18 @@ function Form () {
         {error.temporada && <p style={{color: "red"}}>{error.temporada}</p>}
 
         <label htmlFor="">Paises</label>
-        <select type="text" name="countries" value={activityData.countries} onChange={handleChange}>
-            <option value="">Seleccionar Países</option>
+        <select id="countries" type="text" name="countries">    
+            <option>Seleccionar Países</option>
             {paises.map(p => <option key={p.name} value={p.name}>{p.name}</option>)}
         </select>
         {error.countries && <p style={{color: "red"}}>{error.countries}</p>}
-        
-        <button type="submit" disabled={disableButton()} >AGREGAR</button>
+        <button className={style.cargarboton} type="button" name="countries" value={activityData.countries} onClick={handleChange}>Cargar Pais</button>
+
+        <button style={{ backgroundColor: disableButton() ? "red" : "" }}  type="submit" disabled={disableButton()} >AGREGAR</button>
+
+        <Link to={"/home"}>
+            <button>Volver al Home</button>
+        </Link>
 
         </form>
         </div>

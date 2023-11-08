@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import style from "./Details.module.css"
+import { Link } from "react-router-dom";
 
 
 const Details = () => {
@@ -63,6 +64,9 @@ const Details = () => {
         <div className={style.dato}>
         <p className={style.textop}>Población: {countries?.poblacion }</p>
         
+        <Link to={"/home"}>
+            <button>Volver al Home</button>
+        </Link>
         </div>
 
         </div>

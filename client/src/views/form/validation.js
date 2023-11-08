@@ -5,7 +5,7 @@ const validation = (activityData) => {
         errors.name = "Debe tener un nombre y El nombre no puede contener un numero"
     }
 
-    if(!activityData.duracion || activityData.duracion > 8) {
+    if( activityData.duracion > 8) {
         errors.duracion = "La actividad no puede durar más de 8 horas"
     }
 

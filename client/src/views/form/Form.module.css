@@ -9,6 +9,16 @@
     background-color: white;
   }
 
+  .cargarboton {
+    background-color: grey;
+    color: black
+  }
+
+  .disabled-estado {
+    background-color: red;
+    color: white; /* Cambia el color del texto a blanco o el que desees */
+  }
+
   .fondo{
       background-color: darkslategrey;
       background-size: cover;
