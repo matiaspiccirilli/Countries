@@ -40,10 +40,12 @@ const Details = () => {
         <p className={style.textop}>Nombre: {countries?.name}</p>
         </div>
 
+        <div className={style.contebandera}>
+        <p className={style.textop}>Bandera:</p></div>
         <div className={style.dato}>
-        <p className={style.textop}>Bandera:</p>
         <img src={countries?.img}></img>
         </div>
+        
 
         <div className={style.dato}>
         <p className={style.textop}>Continente: {countries?.continente}</p>  
@@ -63,7 +65,9 @@ const Details = () => {
 
         <div className={style.dato}>
         <p className={style.textop}>Población: {countries?.poblacion }</p>
-        
+        </div>
+
+        <div className={style.botonback}>
         <Link to={"/home"}>
             <button>Volver al Home</button>
         </Link>

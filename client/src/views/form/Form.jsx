@@ -85,7 +85,8 @@ function Form () {
                         duracion: "",
                         temporada: "",
                         countries: ""
-                    });
+                    })
+                    setError({name: "*", dificultad: "*", temporada: "*", countries: "*"})
                 })
         .catch(err=>alert(err))
     }

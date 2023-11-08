@@ -5,20 +5,35 @@
     margin: 0;
     padding: 0;
     top: 0;
-    height: 680px
+    height: 680px;
+    display: flex;
+    justify-content: center;
 }
 
 .textop{
   font-style: oblique;
-  background-color: grey;
+  color: black;
+  font-weight: bold;
+  background-color:  rgb(160, 180, 180);
   width: 280px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.botonback{
+  display: flex;
+  justify-content: center;
+}
+
+.contebandera {
   display: flex;
   justify-content: center;
 }
 
 .dato{
-  direction: center;
-  
+  display: flex;
+  justify-content: center;
 }
 
 .predatos {
@@ -27,9 +42,9 @@
 }
 
 .contenedor {
-  direction: center;
   background-color: white;
   width: 400px;
+  height: 680px;
 }
 
 
