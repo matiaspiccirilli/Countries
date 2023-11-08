@@ -2,9 +2,10 @@ import React from "react"
 import style from "./SearchBar.module.css"
 import { useDispatch } from "react-redux"
 import { searchCountrie } from "../../redux/actions"
+import { useEffect } from "react"
 
 
-function SearchBar () {
+function SearchBar ( {resetSearch, setResetSearch}) {
     const dispatch = useDispatch()
     const [name, setName] = React.useState()
 
@@ -16,6 +17,13 @@ function SearchBar () {
     const handleSubmit = (event) => {
         dispatch(searchCountrie(name))
     }
+
+    useEffect(() => {
+        if (resetSearch) {
+          setName(""); 
+          setResetSearch(false); 
+        }
+      }, [resetSearch, setResetSearch]);
 
     return (
         

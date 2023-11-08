@@ -9,6 +9,7 @@ import style from "./Home.module.css"
 import { Link } from "react-router-dom"
 
 
+
 const Home = () => {
 
     const dispatch = useDispatch()
@@ -44,8 +45,15 @@ const Home = () => {
         dispatch(changePage(event.target.name))
     }
 
+    const [resetSearch, setResetSearch] = useState(false);
+
     const reset = (event) => {
         dispatch(getCountries(event.target.name))
+        const selectElements = document.querySelectorAll(".select-container select");
+        selectElements.forEach((select) => {
+        select.value = "";
+        })
+        setResetSearch(true)
     }
 
     return (
@@ -105,7 +113,10 @@ const Home = () => {
             <button onClick={reset} name="reset">Reset</button>            
             </div>
 
-            <SearchBar className={style.search} />
+            <SearchBar 
+            className={style.search}
+            resetSearch={resetSearch} setResetSearch={setResetSearch}
+             />
 
             <Link to={"/form"}>
             <button>Agregar Actividad</button>
