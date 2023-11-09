@@ -20,7 +20,7 @@ const Details = () => {
                 alert("no hay paises con ese ID")
             }
         })
-        .catch(()=> {console.log("se rompio!")})
+        .catch((error)=> alert(error.response.data.error))
 
         return setCountries({})
     }, [params?.id])

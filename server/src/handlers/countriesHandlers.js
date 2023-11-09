@@ -4,7 +4,9 @@ const {Activity} = require("../db")
 const getAllCountries = async (req, res) => {
 
     try {
-        const countries = await Country.findAll()
+        const countries = await Country.findAll({
+            include: [{model: Activity}],
+        })
         const { name } = req.query;
         if (!name) {
             return res.status(200).json(countries);
