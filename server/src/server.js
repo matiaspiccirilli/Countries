@@ -7,7 +7,13 @@ const server = express();
 
 server.use(morgan("dev"));
 server.use(express.json());
-server.use(cors());
+server.use(cors(
+    {
+        origin: "*",
+        methods: "GET,PUT,PATCH,HEAD,DELETED,POST",
+        credentials: true,
+    }
+));
 
 server.use(router);
 
