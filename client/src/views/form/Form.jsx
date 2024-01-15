@@ -76,7 +76,8 @@ function Form () {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post("http://localhost:3001/activities",activityData)
+        //axios.post("http://localhost:3001/activities",activityData) para local
+        axios.post("https://countries-production-87e9.up.railway.app/activities",activityData) //para deploy
         .then(res=>{
                     alert("Actividad Creada con Exito!") 
                     setActivityData({

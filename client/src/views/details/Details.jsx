@@ -12,7 +12,7 @@ const Details = () => {
     const [countries, setCountries] = React.useState()
 
     React.useEffect(() => {
-        axios(`http://localhost:3001/countries/${params?.id}`)
+        axios(`https://countries-production-87e9.up.railway.app/countries/${params?.id}`)
         .then(({data}) => {
             if (data.name) {
                 setCountries(data);
