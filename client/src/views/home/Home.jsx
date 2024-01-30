@@ -7,6 +7,8 @@ import { filterContinent, getCountries, changePage, getActivities, filterActivit
 import { orderName, orderPopulation } from "../../redux/actions";
 import style from "./Home.module.css"
 import { Link } from "react-router-dom"
+import { Pagination } from "@mui/material";
+import { Stack } from "@mui/material";
 
 
 
@@ -20,6 +22,8 @@ const Home = () => {
     }, [])
 
     const actividades = useSelector(state=> state.activities)
+
+    const currentPage = useSelector(state=> state.currentPage) + 1
     
     const [aux, setAux] = useState(false)
 
@@ -75,7 +79,6 @@ const Home = () => {
                 <option value="Antarctica">Antartida</option>
             </select>
             </div>
-
             <div className="select-container">
             <label className={style.label}>FILTRAR POR ACTIVIDADES</label>
             <select className={style.customselect} name="FiltroByActivities" onChange={handleFilterByActivity}>
@@ -108,6 +111,9 @@ const Home = () => {
         <div className={style.sectiontwo}>
             
             <div>
+            <Stack spacing={2}>
+            <Pagination count={25} color="primary" page={currentPage} hidePrevButton hideNextButton />
+            </Stack>
             <button onClick={pagination} name="prev">{"<<"}</button>
             <button onClick={pagination} name="next">{">>"}</button>
             <button onClick={reset} name="reset">Reset</button>            
