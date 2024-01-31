@@ -177,19 +177,21 @@ const rootReducer = (state = initialState, action) => {
                 }*/
 
                 case CHANGEPAGINATION:
+
+                const firtsindex = (action.payload - 1)*ITEM_PER_PAGE
                 
                 if(state.filter || state.ordername || state.orderpopu || state.filteract || state.filtercon){
 
                     return {
                         ...state,
-                        countries: [...state.countriesFiltered].splice(action.payload - 1, ITEM_PER_PAGE),
+                        countries: [...state.countriesFiltered].splice(firtsindex, ITEM_PER_PAGE),
                         currentPage: action.payload - 1
                     }
                 }
     
                 return {
                     ...state,
-                    countries: [...state.allCountries].splice(action.payload - 1, ITEM_PER_PAGE),
+                    countries: [...state.allCountries].splice(firtsindex, ITEM_PER_PAGE),
                     currentPage: action.payload - 1
                 }        
 
