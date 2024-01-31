@@ -1,4 +1,4 @@
-import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CONTINENT, PAGINATION, SEARCH_COUNTRY, GET_ACTIVITIES } from "./actionType"
+import { FILTER_ACTIVITY, GET_COUNTRIES, ORDER_NAME, ORDER_POPULATION, FILTER_CONTINENT, PAGINATION, SEARCH_COUNTRY, GET_ACTIVITIES, CHANGEPAGINATION } from "./actionType"
 import { orderName } from "./actions";
 
 const initialState = {
@@ -144,7 +144,7 @@ const rootReducer = (state = initialState, action) => {
                 currentPage: 0
             }
 
-        case PAGINATION:
+        /*case PAGINATION: // PAGINADO OBSOLETO
             
                 const next_page = state.currentPage + 1;
                 const prev_page = state.currentPage - 1;
@@ -174,7 +174,24 @@ const rootReducer = (state = initialState, action) => {
                     ...state,
                     countries: [...state.allCountries].splice(firstindex, ITEM_PER_PAGE),
                     currentPage: action.payload === "next" ? next_page : prev_page
+                }*/
+
+                case CHANGEPAGINATION:
+                
+                if(state.filter || state.ordername || state.orderpopu || state.filteract || state.filtercon){
+
+                    return {
+                        ...state,
+                        countries: [...state.countriesFiltered].splice(action.payload - 1, ITEM_PER_PAGE),
+                        currentPage: action.payload - 1
+                    }
                 }
+    
+                return {
+                    ...state,
+                    countries: [...state.allCountries].splice(action.payload - 1, ITEM_PER_PAGE),
+                    currentPage: action.payload - 1
+                }        
 
         default:
             return {...state}

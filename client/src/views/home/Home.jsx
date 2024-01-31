@@ -3,13 +3,12 @@ import Cards from "../../components/cards/Cards";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { filterContinent, getCountries, changePage, getActivities, filterActivity } from "../../redux/actions";
+import { filterContinent, getCountries, changePage, getActivities, filterActivity, changePagination } from "../../redux/actions";
 import { orderName, orderPopulation } from "../../redux/actions";
 import style from "./Home.module.css"
 import { Link } from "react-router-dom"
 import { Pagination } from "@mui/material";
 import { Stack } from "@mui/material";
-
 
 
 const Home = () => {
@@ -24,7 +23,11 @@ const Home = () => {
     const actividades = useSelector(state=> state.activities)
 
     const currentPage = useSelector(state=> state.currentPage) + 1
+
+    const sizePagination = useSelector(state=> state.countriesFiltered) 
     
+    const finalSize = sizePagination.length === 0 ? 25 : Math.ceil(sizePagination.length/10)
+
     const [aux, setAux] = useState(false)
 
     const handleOrderByName = (event) => {
@@ -58,6 +61,10 @@ const Home = () => {
         select.value = "";
         })
         setResetSearch(true)
+    }
+
+    const onchangePagination = (event, page) => {
+        dispatch(changePagination(page))
     }
 
     return (
@@ -109,14 +116,12 @@ const Home = () => {
         <div className={style.separate}></div>
 
         <div className={style.sectiontwo}>
+        <button onClick={reset} name="reset">Reset</button>   
             
             <div>
             <Stack spacing={2}>
-            <Pagination count={25} color="primary" page={currentPage} hidePrevButton hideNextButton />
-            </Stack>
-            <button onClick={pagination} name="prev">{"<<"}</button>
-            <button onClick={pagination} name="next">{">>"}</button>
-            <button onClick={reset} name="reset">Reset</button>            
+            <Pagination count={finalSize} color="primary" page={currentPage} onChange={onchangePagination} />
+            </Stack>         
             </div>
 
             <SearchBar 
