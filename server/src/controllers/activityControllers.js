@@ -7,7 +7,7 @@ const createNewActivity = async (name, dificultad, duracion, temporada, countrie
     const countriespost = await Country.findAll({
         where: {name: countries},
     })
-    console.log(countries)
+
     await nuevaActividad.addCountry(countriespost)
 
     return nuevaActividad

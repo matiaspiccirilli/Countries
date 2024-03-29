@@ -3,9 +3,9 @@ const server = require("./src/server");
 const { conn } = require('./src/db.js');
 const {Country} = require("./src/db")
 const api = require("./api/db.json")
-const PORT = process.env.PORT || 3003; // Para Deploy
+//const PORT = process.env.PORT || 3003; // Para Deploy
 
-//const PORT = 3001; // Para Local
+const PORT = 3004; // Para Local
 
 conn.sync({ force: true }).then(() => {
 server.listen(PORT, "0.0.0.0", async () => {

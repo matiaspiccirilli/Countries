@@ -9,8 +9,8 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST, PGUSER, PGPASSWORD, PGHOST, PGPORT, PGDATABASE, DATABASE_URL
 } = process.env;
 
-//const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, { // PARA LOCAL
-const sequelize = new Sequelize(`${DATABASE_URL}`, {   // PARA DEPLOY
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, { // PARA LOCAL
+//const sequelize = new Sequelize(`${DATABASE_URL}`, {   // PARA DEPLOY
   logging: false, 
   native: false,
   timestamps: false,
